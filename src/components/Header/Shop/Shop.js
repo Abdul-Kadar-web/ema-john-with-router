@@ -12,6 +12,8 @@ const Shop = () => {
     const [products, setProducts] = useState(first10);
     const [cart, setCart] = useState([]);
 
+    document.title = "Shop More"
+
     useEffect(() => {
         const savedCart = getDatabaseCart();
         const productKeys = Object.keys(savedCart);
@@ -47,6 +49,9 @@ const Shop = () => {
         <div className="twin-container">
             <div className="product-container">
                 {
+                    products.length === 0 && <p>loading....</p>
+                }
+                {
                     products.map(pd => <Product
                         key={pd.key}
                         showAddToCart={true}
@@ -63,7 +68,7 @@ const Shop = () => {
                     </Link>
                 </Cart>
             </div>
-
+                
         </div>
     );
 };
